@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage.component.css']
 })
 export class ManageComponent implements OnInit {
+  videoOrder = '1';
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      this.videoOrder = params.sort === '2' ? params.sort: '1'
+    });
   }
 
+  sort(event: Event) {
+    const { value } = (event.target) as HTMLSelectElement;
+    this.router.navigateByUrl(`/manage?sort=${value}`);
+  }
 }
