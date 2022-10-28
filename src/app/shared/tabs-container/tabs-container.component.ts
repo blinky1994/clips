@@ -9,7 +9,7 @@ import { Component, AfterContentInit, ContentChildren, QueryList } from '@angula
 export class TabsContainerComponent implements AfterContentInit {
 
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent> = new QueryList();
-
+  lala = true;
   constructor() { }
 
   ngAfterContentInit(): void {
