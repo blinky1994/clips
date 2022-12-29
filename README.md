@@ -1,27 +1,19 @@
-# Clips
+# Clipz
+Video sharing platform built with Angular, TailwindCSS and Firebase. Used FFMPEG to generate screenshot thumbnails.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
+![clipz](https://user-images.githubusercontent.com/56903269/209942519-05798022-ebca-44fb-94af-0aa75a41f626.png)
 
-## Development server
+# User authentication
+For user authentication, the user and password authentication from the Firebase API is used. The login form uses the `ReactiveFormsModule` to provide more controls when dealing with input invalidation.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Storing Videos
+Firebase is used to store the video files. Rules are set for a 20MB max video size and only in .mp4 format. For uploading videos, I used `AngularFireStorage` to easily upload and store the content in my own defined clip path. This also returns the storage URL which I stored in my list of clips object to be used for the other parts of the app.
 
-## Code scaffolding
+# Playing Videos
+`Video.js` is used to play the videos and only requires initializing the player and editing styling settings.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Generating Thumbnails
+`FFmpeg` is used for processing the videos and generating 3 screenshot thumbnails at video positions 00:00:00 to 00:00:02. 
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
